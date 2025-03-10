@@ -1,0 +1,45 @@
+.page-header {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; justify-content: space-between;
+}
+
+.page-title {
+    font-size: 1.6rem;
+    font-family: Consolas, 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+    .logo {
+        border-radius: 25%;
+    }
+
+.content-wrapper {
+    padding-left: 2vw; padding-right: 2vw;
+}
+
+.page-title {
+
+}
+
+.page-nav {
+    padding-top: 12px;
+}
+
+.nav {
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+    .nav-item {
+        margin-right: 1vw;
+        font-weight: 500;
+        border-radius: 4px;
+        background: #eee;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 4px 12px;
+    }

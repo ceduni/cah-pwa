@@ -6,16 +6,90 @@
     <title>Développement d'applications web progressives avec cadriciel</title>
     <link rel="canonical" href="https://ceduni.github.io/cah-pwa/">
     <link rel="manifest" href="/cah-pwa/manifest.json">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-    <header>
-        <h1>Développement d'applications web progressives avec cadriciel</h1>
+    <header class="page-header">
+        <img src="assets/images/logo.png" class="logo" height="120" alt="" srcset="">
+        <div class="content-wrapper">
+            <h1 class="page-title">Développement d'applications web progressives avec cadriciel</h1>
+        </div>
     </header>
-    <main>
-        <section></section>
+    <main class="page-body">
+        <nav class="page-nav">
+            <ul class="nav bare-list">
+                <li class="nav-item" title="Phase 1: Construction d'une application web avec cadriciel (React)"><a class="nav-link" href="#phase-1">Phase 1</a></li>
+                <li class="nav-item" title="Phase 2: Transformation d'une application web en PWA"><a class="nav-link" href="#phase-2">Phase 2</a></li>
+                <li class="nav-item" title="Phase 3: Évaluation et optimisation d'une application PWA"><a class="nav-link" href="#phase-3">Phase 3</a></li>
+            </ul>
+        </nav>
+        <div class="page-content content-wrapper">
+            <section>
+                <h2>Introduction</h2>
+                <p>
+                    Les applications web progressives (PWA) sont des applications web qui offrent une expérience
+                    utilisateur similaire à celle des applications natives. Elles sont conçues pour fonctionner 
+                    sur n'importe quel navigateur web et sur n'importe quel appareil, en utilisant les technologies
+                    web standard.
+                </p>
+                <p>
+                    Les PWA peuvent être installées sur l'écran d'accueil de l'appareil de l'utilisateur, 
+                    sans passer par un magasin d'applications (ex: App Store, Google Play). Elles peuvent fonctionner 
+                    hors ligne et envoyer des notifications push.
+                </p>
+            </section>
+            <section id="phase-1">
+                <h2>Phase 1: Construction d'une application web avec cadriciel (React)</h2>
+                <p>
+                    React est un librairie JavaScript (pas un framework) open-source utilisée pour développer
+                    des interfaces utilisateur réactives, principalement pour des applications web. 
+                    Elle permet de créer des composants réutilisables et dynamiques qui se mettent à jour
+                    en fonction des changements de données.
+                </p>
+                <p>
+                    Les principales caractéristiques de React sont :
+                </p>
+                <ul>
+                    <li><strong>Composants :</strong>  Les interfaces sont composées de petits blocs appelés "composants", qui peuvent être réutilisés, ce qui rend le code plus modulaire et plus facile à maintenir.</li>
+                    <li><strong>Virtual DOM :</strong> React utilise un "Virtual DOM" (Document Object Model virtuel) pour optimiser les performances. Lorsqu'une donnée change, React met à jour d'abord un DOM virtuel, puis le compare à l'ancien pour déterminer les modifications nécessaires avant de mettre à jour le vrai DOM.</li>
+                    <li><strong>Flux unidirectionnel :</strong> Les données dans React circulent dans un seul sens, ce qui rend l'état de l'application plus facile à comprendre et à déboguer.</li>
+                    <li><strong>JSX :</strong> React utilise JSX, un langage de syntaxe qui permet d'écrire des éléments HTML dans du code JavaScript, ce qui rend la création d'interfaces plus intuitive</li>
+                </ul>
+                
+                <div>
+                    <h3>Hello World</h3>
+                </div>
+                <div>
+                    <h3>Mon premier composant</h3>
+                </div>
+                <div>
+                    <h3>Syntaxe JSX</h3>
+                </div>
+                <div>
+                    <h3>Mon premier composant</h3>
+                </div>
+                <div>
+                    <h3>Gestion de l'état</h3>
+                </div>
+                <div>
+                    <h3>Introduction aux hooks</h3>
+                </div>
+                <div>
+                    <h3>Application TODO</h3>
+                </div>
+            </section>
+            <section id="phase-2">
+                <h2>Phase 2: Transformation d'une application web en PWA </h2>
+            </section>
+            <section id="phase-3">
+                <h2>Phase 3: Évaluation et optimisation d'une application PWA </h2>
+            </section>
+        </div>
     </main>
-    <footer></footer>
+    <footer class="page-footer"></footer>
 
-    <script type="module" src="main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>

@@ -2,10 +2,12 @@
     "name": "Développement d'applications web progressives avec cadriciel",
     "short_name": "AH-PWA",
     "description": "Matériel pour le cours de Développement d'applications web progressives (PWA) avec cadriciel (framework) enseigné au Collège Ahuntsic",
-    "start_url": "/cah-pwa/",
+    "start_url": ".",
+    "scope": ".",
     "display": "standalone",
     "background_color": "#fefefe",
     "theme_color": "#3573DD",
+    "lang": "fr",
     "icons": [
       {
         "src": "/assets/icons/icon-48.png",

@@ -1,0 +1,36 @@
+---
+title: Application web progressive avec cadriciel
+description: Cours enseigné à l'hiver 2025 au Collège Ahuntsic.
+template: splash
+hero:
+  tagline: Cours enseigné à l'hiver 2025 au Collège Ahuntsic
+  image:
+    file: ../../assets/images/logo.png
+  actions:
+    - text: Notes de cours
+      link: /notes/week1/
+      icon: right-arrow
+    - text: Projet de session
+      link: /project-1
+      icon: pen
+      variant: secondary
+---
+
+import { Card, LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+## Liens rapides
+
+<CardGrid stagger>
+	<Card title="Cours de la semaine" icon="document">
+		Cette semaine, nous poursuivons notre apprentissage de React avec les composants et les hooks.  
+		[**Voir notes de cours**](/notes/week2).
+	</Card>
+	{/* <Card title="Démonstrations" icon="laptop">
+		Add Markdown or MDX files to `src/content/docs` to create new pages.
+	</Card> */}
+	<Card title="Quiz et exercices" icon="puzzle">
+		Les exercices arrivent bientôt. Restez à l'affût!
+	</Card>
+	{/* <Card title="Notes de cours" icon="open-book">
+	</Card> */}
+</CardGrid>

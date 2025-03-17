@@ -54,6 +54,10 @@ th { text-align: center; }
 
 .font-title { font-family: 'Proxima N W01 Bold', Arial, Helvetica, sans-serif; }
 
+.code {
+    font-size: 1.3rem;
+}
+
 
 /* Organization
 ---------------------------------------------------------------------------- */

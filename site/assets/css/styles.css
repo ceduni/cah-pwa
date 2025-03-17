@@ -1,7 +1,24 @@
 .page-header {
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; justify-content: space-between;
+    display: flex;
+    background-color: #e5e4e2;
+}
+
+.site-title {
+    display: block;
+    padding: 6px 12px;
+    font-size: 1.4rem; font-weight: bold;
+    color: #fff;
+    width: 150px;
+    background-color: #ED2839;
+}
+
+.site-title-2 {
+    display: block;
+    padding: 12px;
+    font-size: 1.3rem; font-weight: bold;
+    color: #fff;
+    width: 72px;
+    background-color: #232425;
 }
 
 .page-title {
@@ -10,9 +27,6 @@
     font-weight: bold;
 }
 
-    .logo {
-        border-radius: 25%;
-    }
 
 .content-wrapper {
     padding-left: 2vw; padding-right: 2vw;
@@ -42,4 +56,22 @@
     .nav-link {
         display: block;
         padding: 4px 12px;
+    }
+
+.content {
+    padding: 12px;
+    background: royalblue;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.question {
+    margin-bottom: 6px;
+    padding: 12px;
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+    .question:has(details[open]) {
+        background-color: #444;
+        color: #fff;
     }

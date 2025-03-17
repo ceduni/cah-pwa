@@ -1,0 +1,59 @@
+---
+const title = "Projet 1"
+const description = "This is a custom page in Astro with Starlight."
+import Image from 'astro/components/Image.astro';
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import screenshot_avis from '/src/assets/images/screenshot_site_avis_alerte.png';
+---
+
+<StarlightPage frontmatter={{ title: 'Projet 1' }} hasSidebar={false} headings={
+  [
+    { text: 'Contexte', slug: "context", depth: 2 },
+    { text: 'Mandat du projet', slug: "work", depth: 2 },
+    { text: 'Consignes', slug: "consignes", depth: 2 },
+    { text: 'Évaluation', slug: "evaluation", depth: 2 },
+  ]
+}>
+  <p>
+    Le projet de session consiste à transformer le sous-site  d'<a href="https://montreal.ca/avis-et-alertes" target="_blank">Avis et alertes </a>
+    de la ville de Montréal en application web progressive (PWA). 
+    <Image src={screenshot_avis} alt="Capture du site d'avis et alertes de la ville de Montréal" width={720} />
+  </p>
+  
+  <h2>Contexte</h2>
+
+  <p>
+    Le site d'Avis et alertes présente les avis et alertes qui ont été émis par l'outil de gestion des alertes de la Ville.
+    Les avis et alertes communiquent les renseignements importants à la population en cas d'urgence et en situations pouvant
+    avoir un impact sur la vie quotidienne (ex: avis d'ébullition d'eau, travaux, fermeture de piscine, etc.). <br>
+    L'objectif de ce projet est de rendre l'information plus accessible et plus facile à consulter pour les citoyens de Montréal.
+    Nous voulons que les informations soit accessibles en tout temps, même sans connexion internet et que les citoyens
+    recoivent des notifications d'alertes dès qu'elles sont émises, sans avoir à consulter directement l'application. <br>
+    Pour ce faire, nous allons transformer le site web en application web progressive (PWA). Le développement se fera en 3 phases, 
+    avec la première se concentrant sur la création de l'interface interactive.
+  </p>
+
+  <h2>Mandat du projet</h2>
+  
+  <h4>
+    Création de l’interface interactive avec React :
+  </h4>
+  
+  <ul>
+    <li>Intégrer React dans la structure existante du site.</li>
+    <li>Développer les composants interactifs pour afficher les alertes (ex : cartes d'alertes, barre de recherche, etc.).</li>
+  </ul>
+  
+  <h4>Adaptation de l'interface aux petits écrans</h4>
+  
+  <ul>
+    <li>Adapter l’interface pour qu'elle soit lisible et fonctionnelle sur des smartphones et tablettes.</li>
+    <li>Utiliser des menus hamburgers, icônes simples et boutons adaptés aux écrans tactiles.</li> 
+  </ul>
+
+  <h4>Implémentation du filtre fonctionnel</h4>
+  <ul>
+    <li>Créer un filtre simple permettant de trier les alertes par date ou type d'alerte.</li>
+    <li>Assurer une mise à jour dynamique des alertes lorsqu’un filtre est appliqué.</li>
+  </ul>
+</StarlightPage>

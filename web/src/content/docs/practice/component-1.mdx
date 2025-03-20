@@ -1,0 +1,64 @@
+---
+title: Application de comptage de texte
+description: A reference page in my new Starlight docs site.
+---
+
+import App from '../../../components/react/App.jsx';
+import { Icon } from '@astrojs/starlight/components';
+import { FileTree } from '@astrojs/starlight/components';
+
+
+Créer une application React qui permet à un utilisateur de saisir un texte et d'afficher des informations
+en temps réel sur ce texte, telles que le nombre de mots, le nombre moyen de syllabes par mot, 
+et une représentation visuelle sous forme de cercle dont la taille et la couleur évoluent en fonction 
+de la complexité de la phrase.
+
+## Spécification
+
+1. Nombre de mots : Afficher le nombre total de mots présents dans le texte saisi. Un mot est défini comme une séquence de caractères séparée par des espaces.
+2. Nombre moyen de syllabes par mot : Afficher le nombre moyen de syllabes par mot dans le texte.
+   - Utiliser la librairie `syllabify-fr` pour trouver les syllabes d'un mot
+4. Cercle dynamique : Afficher un cercle qui augmente en taille à mesure que le nombre de mots dans le texte augmente. 
+   - La taille du cercle doit être proportionnelle au nombre de mots.
+   - La couleur du cercle doit changer par palier de nombre de mots. Voilà des exemples de paliers:
+      - Texte de moins de 10 mots: Cercle vert.
+      - Texte de 10 à 15 mots: Cercle orange.
+      - Texte de plus de 15 mots: Cercle rouge.
+
+## Solution 
+
+<div class="app">
+   <span class="app-label">Exemple</span>
+   <App client:idle />
+</div>
+
+
+### Organisation du code
+
+<FileTree>
+
+- package.json
+- src
+  - components
+    - Circle.jsx -- ceci est un commentaire
+    - Stats.jsx
+    - TextField.jsx
+  - hooks
+    - useSyllabeCounter.jsx
+  - App.jsx
+  - App.css
+
+</FileTree>
+
+### Structure générale
+
+```jsx title="App.jsx"
+  <>
+      <h1 className="title">Évaluateur de texte</h1>
+      <TextField text={text} handleTextChange={handleTextChange} handleClear={handleClear} />
+      <Stats text={text} wordCount={wordCount} syllableCount={syllableCount} />
+      <Circle size={circleSize} color={circleColor} />
+  </>
+```
+
+La solution se trouve sur [GitHub](https://github.com/ceduni/cah-pwa/tree/9ce3c12534bf33d815ea35511a4d711957c5585e/code/tldr-eval).

@@ -18,7 +18,7 @@ const ProjectData = [
         description: "Création d'une application mobile de e-commerce offrant une expérience d'achat personnalisée avec recommandations basées sur les préférences utilisateur. Intégration d'un système de paiement sécurisé et d'un suivi en temps réel des commandes, avec une interface intuitive et optimisée pour la vente mobile.",
         imageURL: "https://cdn.prod.website-files.com/63894f0e251e567f6e443bfa/673664ad7d4807debd0fca04_652033a42a44bf5bf252a0cd_20231006T0418-8f475758-44b3-4a29-853f-598ddf3416ce.png",
         linkURL: "#",
-    },
+    }
 ]
 
 export function getProjects() {

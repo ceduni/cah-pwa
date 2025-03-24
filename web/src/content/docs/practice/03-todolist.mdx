@@ -1,0 +1,34 @@
+---
+title: To-Do List
+description: Création d'une application de To-Do List avec React.
+lastUpdated: 2025-03-23
+---
+
+import ToDoList from '../../../components/react/Todo.jsx';
+
+
+Créer une application To-Do List permettant aux utilisateurs d'ajouter, modifier, supprimer et marquer des éléments comme complétés. 
+Lorsque l'utilisateur marque un élément comme complété, le texte de l'élément devient plus pâle et un trait horizontal apparaît à travers celui-ci (effet cross-through).
+
+## Spécification
+
+1. jouter un élément : L'utilisateur peut ajouter un élément à la liste en entrant un texte dans un champ de saisie et en cliquant sur un bouton "Ajouter".
+2. Modifier un élément : L'utilisateur peut modifier le texte d'un élément en cliquant dessus pour le rendre modifiable et en sauvegardant la modification.
+3. Supprimer un élément : L'utilisateur peut supprimer un élément de la liste en cliquant sur un bouton "Supprimer" associé à chaque élément.
+4. Marquer un élément comme complété : L'utilisateur peut cocher une case à côté d'un élément pour le marquer comme terminé. Lorsque l'élément est complété : Le texte devient plus pâle.
+Un trait horizontal (effet cross-through) passe à travers le texte.
+
+## Solution 
+
+<div class="app">
+   <span class="app-label">Exemple</span>
+   <ToDoList client:idle />
+</div>
+
+La solution se trouve sur [GitHub](https://github.com/ceduni/cah-pwa/tree/9ce3c12534bf33d815ea35511a4d711957c5585e/code/tldr-eval)
+
+La solution se trouve sur le [**répertoire GitHub du cours**](https://github.com/ceduni/cah-pwa/tree/9ce3c12534bf33d815ea35511a4d711957c5585e/code/tldr-eval)
+
+:::tip[Pour aller plus loin: Ajout de sous-tâches]
+Permettre à chaque tâche d'avoir des sous-tâches. Une sous-tâche doit avoir les mêmes fonctionnalités que les tâches principales, y compris la possibilité d'être ajoutée, modifiée, supprimée et marquée comme complétée. Les sous-tâches doivent être affichées sous la tâche principale avec une indentation visuelle pour indiquer la hiérarchie.
+:::

@@ -1,5 +1,5 @@
-import './App.css';
-import React, { useState } from 'react';
+import './TextEval.css';
+import { useState } from 'react';
 import syllabify from 'syllabify-fr';
 import Circle from './components/Circle';
 import Stats from './components/Stats';
@@ -38,7 +38,7 @@ function toSize(wordCount) {
     return Math.min(wordCount * 10, MAX_SIZE);
 }
 
-const App = () => {
+function TextEval() {
     const [text, setText] = useState('');
 
     const handleTextChange = (event) => {
@@ -64,4 +64,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default TextEval;

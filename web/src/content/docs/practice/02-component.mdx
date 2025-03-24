@@ -1,12 +1,12 @@
 ---
-title: Application de comptage de texte
+title: Évaluateur de texte
 description: A reference page in my new Starlight docs site.
+lastUpdated: 2025-03-19
 ---
 
-import App from '../../../components/react/App.jsx';
+import TextEval from '../../../components/react/TextEval.jsx';
 import { Icon } from '@astrojs/starlight/components';
 import { FileTree } from '@astrojs/starlight/components';
-
 
 Créer une application React qui permet à un utilisateur de saisir un texte et d'afficher des informations
 en temps réel sur ce texte, telles que le nombre de mots, le nombre moyen de syllabes par mot, 
@@ -29,7 +29,7 @@ de la complexité de la phrase.
 
 <div class="app">
    <span class="app-label">Exemple</span>
-   <App client:idle />
+   <TextEval client:idle />
 </div>
 
 
@@ -40,7 +40,7 @@ de la complexité de la phrase.
 - package.json
 - src
   - components
-    - Circle.jsx -- ceci est un commentaire
+    - Circle.jsx
     - Stats.jsx
     - TextField.jsx
   - hooks
@@ -61,4 +61,4 @@ de la complexité de la phrase.
   </>
 ```
 
-La solution se trouve sur [GitHub](https://github.com/ceduni/cah-pwa/tree/9ce3c12534bf33d815ea35511a4d711957c5585e/code/tldr-eval).
+La solution se trouve sur [GitHub](https://github.com/ceduni/cah-pwa/tree/9ce3c12534bf33d815ea35511a4d711957c5585e/code/tldr-eval)

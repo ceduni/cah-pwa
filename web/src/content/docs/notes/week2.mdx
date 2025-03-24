@@ -1,0 +1,411 @@
+---
+title: Les composants dans React
+description: Introduction aux composants et hooks dans React
+lastUpdated: 2025-03-22
+---
+import Compteur from '../../../components/react/Compteur.jsx';
+
+## Introduction
+
+L'un des concepts clés sur lequel repose React est le concept de composants. Un **composant** React est une unité réutilisable de code qui permet de créer des éléments d'interface utilisateur (UI) réutilisables.
+Un composant encapsule l’apparence, le comportement et l'état d'une partie du UI et peut être composé d'autres composants. 
+Un composant peut gérer son propre état et réagir aux événements, ce qui lui permet d’être dynamique et interactif.
+
+Les composants sont généralement définis **comme des fonctions** (ou des classes dans certains cas) qui retournent un **élément JSX** (JavaScript XML). Ce JSX représente la structure HTML de l'interface utilisateur.
+Ils peuvent être réutilisés plusieurs fois pour créer des instances multiples, ce qui permet de rendre une application modulaire et évolutive.
+
+
+### Définition d'un composant
+
+```jsx title="HelloWorld.jsx"
+import React from 'react';
+
+function HelloWorld() {
+  return <h1>Hello, World!</h1>;
+}
+
+export default HelloWorld;
+```
+
+Les composants en React peuvent être définis de manière très simple, comme dans cet exemple où le composant `HelloWorld`
+est une fonction qui retourne un contenu statique sous forme d'élément JSX. Ce composant affiche le texte `Hello, World!` dans un titre de niveau 1 (`<h1>`).
+
+### Utilisation d'un composant
+
+```jsx title="App.jsx" "<HelloWorld />"
+import HelloWorld from './HelloWorld';
+
+function App() {
+  return (
+    <div>
+      <HelloWorld />
+    </div>
+  );
+}
+
+export default App;
+```
+
+Ici, le composant `HelloWorld` est importé dans le composant principal `App` et utilisé comme une balise JSX. Ce mécanisme de composition de composants est l'un des piliers de la flexibilité de React, permettant de créer des interfaces complexes à partir de petites unités réutilisables.
+
+## Structurer une page web avec des composants
+
+Dans React, la structure d'une page peut être décomposée en plusieurs composants, chacun responsable d'une partie spécifique de l'interface utilisateur.
+
+Par exemple, une page de profil peut être divisée en des composants comme `Header`, `ProfileInfo`, `Posts`, et `Footer`. 
+Cette approche modulaire rend le développement plus efficace, permet de réutiliser des composants et améliore la maintenabilité de l'application.
+
+#### Exemple
+
+##### Définition de la page de profil
+
+```jsx title="PageProfile.jsx"
+import Header from './Header';
+import ProfileInfo from './ProfileInfo';
+import Posts from './Posts';
+import Footer from './Footer';
+
+function PageProfile() {
+  return (
+    <div>
+      <Header />
+      <ProfileInfo />
+      <Posts />
+      <Footer />
+    </div>
+  );
+}
+
+export default PageProfile;
+```
+
+##### Utilisation de la page de profil
+
+```jsx title="main.jsx" {3} "<PageProfile />"
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import PageProfile from './PageProfile';
+
+createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <PageProfile />
+  </React.StrictMode>
+);
+```
+
+## Paramétriser un composant
+
+Les composants ne sont pas toujours statiques. Ils peuvent être paramétrés pour afficher des données dynamiques ou pour 
+modifier leur comportement en fonction du contexte (composant parent).
+
+### Les Props (Propriétés)
+
+C'est là qu'interviennent les props (propriétés). Les props permettent de transmettre des informations d’un composant parent à un composant enfant,
+modifiant ainsi son comportement ou son affichage en fonction des valeurs reçues.
+
+Grâce aux props, un composant peut afficher des données dynamiques, réagir à des changements dans l'application ou s'adapter aux besoins du contexte. 
+Par exemple, un bouton pourrait être activé ou désactivé en fonction d'une prop spécifique, ou un titre pourrait être modifié pour afficher un message personnalisé.
+
+Les props sont immutables, ce qui signifie qu'un composant enfant ne peut pas modifier directement les valeurs qu'il reçoit. Si un changement est nécessaire, c’est au composant parent de mettre à jour l'état (state) et de transmettre les nouvelles valeurs par le biais des props.
+
+### Définition des Props
+
+Les props sont transmises à un composant sous forme d'un objet. 
+Par exemple, si un composant Parent passe une donnée à un composant Enfant, on peut y accéder via props dans le composant enfant.
+
+- **`Parent.jsx`** définit une variable `message` et la passe comme prop à `Enfant.jsx` sous le nom message.
+- **`Enfant.jsx`** reçoit cette prop via l'objet `props` et l'affiche dans un paragraphe.
+
+
+```jsx title="Parent.jsx"
+import Enfant from './Enfant';
+
+function Parent() {
+  const message = "Hello, from Parent!";
+
+  return (
+    <div>
+      <h1>Composant Parent</h1>
+      <Enfant message={message} />
+    </div>
+  );
+}
+
+export default Parent;
+
+```
+
+```jsx title="Enfant.jsx" 
+function Enfant(props) {
+  return <p>{props.message}</p>;
+}
+
+export default Enfant;
+```
+
+### Utilisation courante des Props
+
+Dans React, les *props* sont passées comme argument à la fonction du composant. 
+Voici comment les* props* sont généralement utilisées dans des composants fonctionnels.
+
+```jsx
+// Composant enfant qui représente une carte individuelle
+function Card({ title, description }) {
+  return (
+    <div className="card">
+      <h2>{title}</h2>
+      <p>{description}</p>
+    </div>
+  );
+}
+
+// Composant parent qui gère la liste des cartes
+function CardList() {
+  const cardsData = [
+    { id: 1, title: 'Carte 1', description: 'Ceci est la description de la carte 1.' },
+    { id: 2, title: 'Carte 2', description: 'Ceci est la description de la carte 2.' },
+    { id: 3, title: 'Carte 3', description: 'Ceci est la description de la carte 3.' }
+  ];
+
+  return (
+    <div className="card-list">
+      {cardsData.map(card => (
+        // Chaque carte reçoit des props "title" et "description"
+        <Card key={card.id} title={card.title} description={card.description} />
+      ))}
+    </div>
+  );
+}
+
+export default CardList;
+```
+
+## Gestion de l'état (`useState`)
+
+:::note
+Pour plus de détails sur les hooks, rendez-vous à la [semaine 3](/notes/week3#introduction-aux-hooks).
+:::
+
+React utilise des **hooks** tels que `useState` et `useEffect` pour gérer l'état au sein des composants fonctionnels. L'état représente les données qui peuvent changer au cours du temps, ce qui rend l'interface utilisateur dynamique. Par exemple, un compteur, un formulaire ou un état de chargement sont des éléments qui peuvent être gérés par l'état dans React.
+
+L'utilisation des hooks permet de rendre la gestion de l'état plus lisible et concise. De plus, React optimise le rendu des composants en ne mettant à jour que ceux dont l'état a changé.
+
+## Construire un compteur simple
+
+<div class="app">
+  <Compteur client:idle />
+</div>
+
+
+### Étape 1: Définir la structure de mon compteur
+
+```jsx
+function Compteur() {
+  let compteur = 0;
+  
+  return (
+    <div>
+      <p>Valeur : {compteur}</p>
+      <button>Incrémenter</button>
+    </div>
+  );
+}
+```
+
+À cette étape, nous définissons un composant de base sans gestion d'état, où le compteur est juste une variable locale.
+
+### Étape 2: Ajouter le comportement
+
+```jsx
+function Compteur() {
+  let compteur = 0
+  
+  const handleClick= (e) => {
+    console.log("Click!");
+    compteur += 1
+  }
+
+  return (
+    <div>
+      <p>Valeur : {compteur}</p>
+      <button onClick={handleClick}>Incrémenter</button>
+    </div>
+  );
+}
+```
+- `onClick={handleClick}`: Lorsque l'utilisateur clique sur le bouton, la fonction `handleClick` est appelée. 
+Elle affiche le message `Click!` dans la console et incrémente la valeur du compteur.
+
+### Étape 3: Lier l'état interne aux éléments JSX
+
+```jsx
+import { useState } from "react";
+
+function Compteur() {
+  const [compteur, setCompteur] = useState(0);
+
+  const handleClick= (e) => {
+    console.log("Click!");
+    setCompteur(compteur + 1);
+  }
+
+  return (
+    <div>
+      <p>Valeur : {compteur}</p>
+      <button onClick={handleClick}>Incrémenter</button>
+    </div>
+  );
+}
+```
+
+L'utilisation de `useState` permet de lier l'état du compteur à l'interface utilisateur. 
+Chaque fois que le bouton est cliqué, le compteur est mis à jour et l'interface est automatiquement rendue avec la nouvelle valeur.
+
+#### Explications
+
+##### 1. Importation de `useState`
+
+Le hook `useState` permet de définir une variable d'état dans un composant fonctionnel, facilitant la gestion de l'état sans avoir besoin de composants de classe.
+   
+##### 2. Déclaration de l’état
+
+```jsx
+const [compteur, setCompteur] = useState(0);
+```
+
+- **`compteur`** est la variable d'état qui stocke la valeur actuelle.
+- **`setCompteur`** est la fonction permettant de mettre à jour cette valeur.
+- **`useState(0)`** signifie que la valeur initiale du compteur est 0.
+
+##### 3. Mise à jour de l'état
+
+```jsx
+setCompteur(compteur + 1);
+```
+
+- À chaque fois que l'état `compteur` change (via `setCompteur`), React effectue un nouveau rendu du composant avec la valeur mise à jour.
+- Le nombre affiché dans `<p>Valeur : {compteur}</p>` est mis à jour sans qu'on ait à recharger la page.
+
+### Étape 4: Optimisation du code
+
+:::tip
+Lorsque le comportement attaché à l'évènement (ex: `onClick`) est "simple", nous pouvons déclarer le gestionnaire d'événement (*event handler*) en ligne (*inline*) 
+:::
+
+```jsx "setCompteur" "setCompteur(compteur + 1)"
+import { useState } from "react";
+
+function Compteur() {
+  const [compteur, setCompteur] = useState(0);
+
+  return (
+    <div>
+      <p>Valeur : {compteur}</p>
+      <button onClick={() => setCompteur(compteur + 1)}>Incrémenter</button>
+    </div>
+  );
+}
+```
+
+{/* <details>
+    <summary>Pourquoi utiliser useState ?</summary>
+    useState permet de réagir dynamiquement aux actions de l'utilisateur sans recharger la page. Il facilite la gestion de l'état dans les composants React fonctionnels, sans avoir besoin de classes. C'est une approche plus simple et moderne comparée aux anciens composants de classe (this.state).
+</details> */}
+
+### Étape 5: Utilisation du compteur
+
+```jsx title="App.jsx" {7}
+import Compteur from "./Compteur";
+
+function App() {
+  return (
+    <div>
+      <h1>Mon Application React</h1>
+      <Compteur />
+    </div>
+  );
+}
+
+export default App;
+```
+
+Ici, nous utilisons le composant `Compteur` à l'intérieur de l'application principale `App`. 
+
+## Récapitulatif
+
+1. Les composants sont des unités réutilisables de code qui encapsulent l'apparence, le comportement et l'état d'une partie de l'interface.
+2. Ils permettent de structurer l'interface utilisateur en unités réutilisables et modulaires.
+3. Les composants peuvent être utilisés plusieurs fois, favorisant la modularité et la maintenabilité.
+4. La gestion de l'état et des props permet de rendre les composants dynamiques et interactifs.
+5. React fournit des hooks tels que `useState` et `useEffect` pour gérer l'état et les effets secondaires dans les composants
+
+## Ressources
+
+- [Guide React: Décrire le UI à l'aide de composants](https://fr.react.dev/learn/describing-the-ui)
+- [Guide React: Gérer l'état](https://fr.react.dev/learn/managing-state)
+- [Référence React: Composant](https://fr.react.dev/reference/react/components)
+- [Référence React: Hooks](https://fr.react.dev/reference/react/hooks)
+
+{/* ## Quiz
+
+1. Qu'est-ce qu'un composant en React ?
+2. Quelle est la différence entre un composant fonctionnel et un composant de classe ?
+3. Comment définir un composant en React ?
+4. Qu'est-ce que les props et comment sont-elles utilisées dans React ?
+5. Qu'est-ce que l'état (state) dans React et comment est-il géré ?
+6. Qu'est-ce que les hooks en React et pourquoi sont-ils utilisés ?
+7. Quel hook est utilisé pour gérer l'état dans un composant fonctionnel ?
+8. Comment mettre à jour l'état d'un composant en React ?
+9. Quelle est l'importance de la composition de composants en React ?
+10. Quels sont les avantages de l'utilisation de composants en React ? */}
+
+{/* ## Un peu de pratique
+
+1. Créez un composant `Greeting` qui affiche un message de bienvenue personnalisé en fonction du nom passé en prop.
+2. Implémentez un composant `Counter` qui affiche un compteur et permet à l'utilisateur d'incrémenter et de décrémenter sa valeur.
+3. Créez un composant `TodoList` qui affiche une liste de tâches à faire avec la possibilité d'ajouter, supprimer et marquer des tâches comme complétées.
+4. Développez un composant `WeatherWidget` qui affiche les prévisions météorologiques pour une ville donnée en utilisant une API de météo.
+ */}
+
+{/* ### Définition d'un composant avec état
+
+```jsx jsx title="Message.jsx" {5}
+import React, { useState } from 'react';
+
+function Message() {
+  // Définir un état local pour le message
+  const [message, setMessage] = useState('Bonjour, bienvenue dans React !');
+
+  // Fonction pour changer le message
+  const changeMessage = () => {
+    setMessage('Vous avez changé le message !');
+  };
+
+  return (
+    <div>
+      <h1>{message}</h1>
+      <button onClick={changeMessage}>Changer le message</button>
+    </div>
+  );
+}
+
+export default Message;
+```
+
+- **useState** : C'est un hook qui permet de gérer l'état dans un composant fonctionnel. Ici, il est utilisé pour définir le message initial et la fonction setMessage pour le modifier.
+- **changeMessage** : Cette fonction change la valeur de l'état lorsque l'utilisateur clique sur le bouton.
+- **onClick** : Lorsqu'on clique sur le bouton, la fonction changeMessage est appelée, modifiant l'état et redéclenchant le rendu du composant avec le nouveau message.
+
+### Utilisation du composant
+
+```jsx
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import Message from './Message';
+
+createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <Message />
+  </React.StrictMode>
+);
+``` */}

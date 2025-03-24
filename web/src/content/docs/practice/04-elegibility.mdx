@@ -1,0 +1,42 @@
+---
+title: Éligibilité aux Services d'Impôt
+description: Création d'une application permettant d'estimer le prix d'un service
+lastUpdated: 2025-03-24
+---
+
+import ImpotEligibility from '../../../components/react/Impot.jsx';
+
+Un organisme de services d'impôt souhaite proposer un outil permettant aux citoyens de vérifier rapidement s’ils sont éligibles à un service d'impôt simplifié. Vous devez concevoir une interface utilisateur qui recueille des informations de base et affiche un message d’éligibilité en fonction des réponses fournies.
+
+## Objectifs
+
+- Créer un formulaire interactif permettant de saisir des informations personnelles et financières.
+- Implémenter des événements dynamiques pour mettre à jour les messages d’éligibilité en fonction des réponses de l'utilisateur.
+- Assurer une validation des champs et un affichage conditionnel du bouton de soumission.
+
+## Spécifications
+
+### 1. Formulaire avec les champs suivants :
+
+- Nom (champ texte, obligatoire)
+- Adresse courriel (champ email, obligatoire)
+- Revenu annuel (champ numérique, obligatoire)
+- Catégories de revenus (cases à cocher) : Revenus d'emploi, Étudiant, Autres revenus
+
+### 2. Affichage dynamique :
+
+- Si l’utilisateur coche "Revenus d'emploi" ou "Étudiant", afficher : "Vous êtes éligible au service standard."
+- Si l’utilisateur coche "Autres revenus", afficher : "Un traitement avancé pourrait être nécessaire."
+- Si aucune case n’est cochée, afficher : "Aucune donnée, veuillez sélectionner au moins un revenu."
+
+### 3. Validation et interaction :
+
+- Le bouton "Vérifier l'éligibilité" est désactivé tant que tous les champs obligatoires ne sont pas remplis.
+- Lorsque l'utilisateur clique sur le bouton, afficher dynamiquement le message d'éligibilité en fonction des réponses fournies.
+
+## Solution 
+
+<div class="app">
+   <span class="app-label">Exemple</span>
+   <ImpotEligibility client:idle />
+</div>

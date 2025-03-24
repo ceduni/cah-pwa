@@ -1,0 +1,126 @@
+.title {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    width: 100%;
+}
+    form input {
+        flex-grow: 2;
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .btn-add {
+        display: flex; align-items: center; justify-content: center;
+        width: 40px;
+        height: 40px;
+        margin-left: 10px;
+        font-size: 16px;
+        color: #fff;
+        background-color: royalblue;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+    }
+
+.todo-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0!important;
+    height: 48px;
+    padding: 10px 0;
+    border-bottom: 1px solid #e5e4e2;
+}
+    .todo:nth-child(odd) {
+        background-color: #f9f9f9;
+    }
+    .todo:last-child {
+        border-bottom: none;
+    }
+
+.todo[data-status='completed'] .todo-text {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.todo-task {
+    display: flex; align-items: baseline;
+}
+
+.todo-text {
+    margin-left: 12px;
+}
+
+.todo-input {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+    .todo-input:focus {
+        outline: none;
+    }
+
+    .todo.completed {
+        text-decoration: line-through;
+        color: #ccc;
+    }
+
+    .todo.completed input[type="text"] {
+        text-decoration: line-through;
+        color: #ccc;
+    }
+
+.todo-actions {
+    display: flex; align-items: baseline;
+    margin: 0 !important;
+}
+
+.todo-actions button {
+    height: 100%;
+    padding: 6px 12px;
+    margin-top: 0 !important;
+    margin-left: 6px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-delete {
+    background-color: #ff6347;
+    color: white;
+}
+    .btn-delete:hover {
+        background-color: #dc143c;
+    }
+
+.btn-edit {
+    background-color: #f0e68c;
+    color: black;
+}
+
+    .btn-edit:hover {
+        color: #f0e68c;
+        background-color: #222;
+    }
+
+.todo .btn-save {
+    background-color: #90ee90;
+    color: black;
+}
+
+    .todo .btn-save:hover {
+        background-color: #32cd32;
+    }

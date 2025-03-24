@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon site web</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            padding: 40px 0;
+            display: flex; flex-direction: column; justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .profile {
+            display: flex; flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+        }
+        
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #eaeaea;
+        }
+        
+        /* Navigation Styles */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #0077cc;
+        }
+        
+        /* Main Content Styles */
+        main {
+            padding: 40px 0;
+        }
+        
+        section {
+            margin-bottom: 60px;
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 20px;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        /* Work Section */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .work-item {
+            border: 1px solid #dcdcdc;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .work-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .work-image {
+            width: 100%;
+            height: 200px;
+            background-color: #eaeaea;
+            object-fit: cover;
+        }
+        
+        .work-info {
+            padding: 20px;
+        }
+        
+        /* Contact Form */
+        form {
+            max-width: 600px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        button {
+            background-color: #0077cc;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #005fa3;
+        }
+        
+        /* Footer Styles */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid #eaeaea;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .social-icon {
+            font-size: 1rem;
+            color: #333;
+            transition: color 0.3s;
+        }
+        
+        .social-icon:hover {
+            color: #0077cc;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header>
+        <div class="profile">
+            <img src="/api/placeholder/100/100" alt="Profile Photo" class="profile-image">
+            <div>
+                <h1>Jean Dupont</h1>
+                <p>Développeur mobile spécialisé en applications multiplateformes et UX/UI design</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main>
+        <!-- About section -->
+        <section id="about">
+            <h2>À propos de moi</h2>
+            <div class="about-content">
+                <div>
+                    <p>Bienvenue sur mon site personnel ! Je suis [votre profession] avec [X années] d'expérience, spécialisé dans [vos spécialisations]. Ma passion réside dans [ce qui vous motive professionnellement].</p>
+                    <p>En dehors de ma vie professionnelle, j'apprécie [intérêts personnels ou loisirs]. Je crois que [philosophie personnelle ou approche du travail].</p>
+                </div>
+                <div>
+                    <h3>Éducation</h3>
+                    <p><strong>Nom du diplôme</strong> - Nom de l'établissement, Année</p>
+                    <p><strong>Certification</strong> - Institution, Année</p>
+                    
+                    <h3>Expérience</h3>
+                    <p><strong>Titre</strong> - Nom de l'entreprise, Années</p>
+                    <p><strong>Rôle précédent</strong> - Ancienne entreprise, Années</p>
+                </div>                
+            </div>
+        </section>
+
+        <!-- Work/Portfolio section -->
+        <section id="work">
+            <h2>Projets</h2>
+            <div class="work-grid">
+                <!-- Projet 1 -->
+                <article class="work-item">
+                    <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Hero_ToDo_960x615_2x_1_RE3HTxG?resMode=sharp2&op_usm=1.5,0.65,15,0&wid=1920&qlt=100&fmt=png-alpha&fit=constrain" alt="Application de gestion de tâches" class="work-image">
+                    <div class="work-info">
+                        <h3>Application de gestion de tâches</h3>
+                        <p>Développement d'une application mobile multiplateforme (iOS/Android) permettant aux utilisateurs de créer, organiser et suivre leurs tâches quotidiennes. L'application inclut des notifications push, une interface utilisateur fluide et un système de synchronisation avec le cloud pour un accès partout.</p>
+                        <a href="#">Lien vers projet</a>
+                    </div>
+                </article>
+                
+                <!-- Projet 2 -->
+                <div class="work-item">
+                    <img src="https://help.apple.com/assets/678AF3BDAED93ED9D1042F84/678AF3C89EC3C835220A70FE/en_US/e18f7ced108ea5db7034d3314925df2c.png" alt="Application de suivi de fitness" class="work-image">
+                    <div class="work-info">
+                        <h3>Application de suivi de fitness</h3>
+                        <p>Conception d'une application dédiée au suivi des activités physiques et des objectifs de santé. Intégration de capteurs de smartphone pour mesurer les performances, suivi des progrès à travers des graphiques dynamiques et possibilité de partager les résultats avec des amis via les réseaux sociaux.</p>
+                        <a href="#">Lien vers projet</a>
+                    </div>
+                </div>
+                
+                <!-- Projet 3 -->
+                <div class="work-item">
+                    <img src="https://cdn.prod.website-files.com/63894f0e251e567f6e443bfa/673664ad7d4807debd0fca04_652033a42a44bf5bf252a0cd_20231006T0418-8f475758-44b3-4a29-853f-598ddf3416ce.png" alt="Application de e-commerce" class="work-image">
+                    <div class="work-info">
+                        <h3>Application de e-commerce</h3>
+                        <p>Création d'une application mobile de e-commerce offrant une expérience d'achat personnalisée avec recommandations basées sur les préférences utilisateur. Intégration d'un système de paiement sécurisé et d'un suivi en temps réel des commandes, avec une interface intuitive et optimisée pour la vente mobile.</p>
+                        <a href="#">Lien vers projet</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills section -->
+        <section id="skills">
+            <h2>Compétences</h2>
+            <div>
+                <h3>Compétences techniques</h3>
+                <p>Développement mobile (iOS/Android), Programmation en React Native, Conception d'interfaces utilisateur (UI/UX), Développement d'applications web progressives (PWA), Intégration d'APIs, Gestion de bases de données (Firebase, SQLite), Optimisation des performances et gestion de la mémoire, Tests et débogage sur plusieurs plateformes.</p>
+                
+                <h3>Compétences interpersonnelles</h3>
+                <p>Travail en équipe agile, Communication efficace, Gestion du temps et des priorités, Résolution de problèmes complexes, Adaptabilité et apprentissage continu, Collaboration avec des équipes pluridisciplinaires (design, marketing, etc.), Leadership et mentorat.</p>
+                
+                <h3>Langues</h3>
+                <p>Français (langue maternelle), Anglais (courant), Espagnol (niveau intermédiaire)</p>
+            </div>
+        </section>        
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <!-- Replace # with your actual social media links -->
+            <a href="#" class="social-icon">LinkedIn</a>
+            <a href="#" class="social-icon">GitHub</a>
+            <a href="#" class="social-icon">Instagram</a>
+        </div>
+        <p>© 2025 [Votre nom]. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

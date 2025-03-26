@@ -1,12 +1,10 @@
 ---
-const title = "Projet 1"
-const description = "This is a custom page in Astro with Starlight."
 import Image from 'astro/components/Image.astro';
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import screenshot_avis from '/src/assets/images/screenshot_site_avis_alerte.png';
+import screenshot_avis from '/src/assets/images/visuel_app_avis_alerte.png';
 ---
 
-<StarlightPage frontmatter={{ title: 'Projet 1' }} hasSidebar={false} headings={
+<StarlightPage frontmatter={{ title: "Projet 1: Conception d'une application React pour les Avis et alertes de Montréal." }} hasSidebar={false} headings={
   [
     { text: 'Contexte', slug: "context", depth: 2 },
     { text: 'Mandat du projet', slug: "work", depth: 2 },
@@ -15,21 +13,84 @@ import screenshot_avis from '/src/assets/images/screenshot_site_avis_alerte.png'
   ]
 }>
   <p>
-    Le projet de session consiste à transformer le sous-site  d'<a href="https://montreal.ca/avis-et-alertes" target="_blank">Avis et alertes </a>
-    de la ville de Montréal en application web progressive (PWA). 
-    <Image src={screenshot_avis} alt="Capture du site d'avis et alertes de la ville de Montréal" width={720} />
-  </p>
-  
-  <p>
-    Le site d'Avis et alertes présente les avis et alertes qui ont été émis par l'outil de gestion des alertes de la Ville.
+    La section <a href="https://montreal.ca/avis-et-alertes"><em>Avis et alertes</em></a> présente les avis et alertes qui ont été émis par l'outil de gestion des alertes de la Ville.
     Les avis et alertes communiquent les renseignements importants à la population en cas d'urgence et en situations pouvant
-    avoir un impact sur la vie quotidienne (ex: avis d'ébullition d'eau, travaux, fermeture de piscine, etc.). <br>
+    avoir un impact sur la vie quotidienne (ex: avis d'ébullition d'eau, travaux, fermeture de piscine, etc.).
+  </p>
+  <p>
     L'objectif de ce projet est de rendre l'information plus accessible et plus facile à consulter pour les citoyens de Montréal.
     Nous voulons que les informations soit accessibles en tout temps, même sans connexion internet et que les citoyens
-    recoivent des notifications d'alertes dès qu'elles sont émises, sans avoir à consulter directement l'application. <br>
+    reçoivent des notifications d'alertes (sur leurs appareils) dès qu'elles sont émises, sans avoir à consulter directement l'application. <br>
     Pour ce faire, nous allons transformer le site web en application web progressive (PWA). Le développement se fera en 3 phases, 
     avec la première se concentrant sur la création de l'interface interactive.
   </p>
+  
+  <h2>Mandat du projet</h2>
+  <Image src={screenshot_avis} alt="Capture du site d'avis et alertes de la ville de Montréal" style={{width: "100%", maxWidth: "900px", marginTop: "12px" }} />
+  <p>
+    Pour la première phase du projet, vous devez créer une application avec React reproduisant le plus fidèlement possible la structure de la page (voir image plus haut).
+    L'application aura des fonctionnalités de recherche et filtre et présentera deux pages principales: la page d'accueil et la page de détail.
+  </p>
+  <ol>
+    <li>Page d'accueil: Présente la liste des alertes et fournis des capacités de recherche.</li>
+    <li>Page de détail: Présente le détail d'une alerte spécifique.</li>
+  </ol>
+
+  <h2>Spécifications</h2>
+  <ul>
+    <li>En-tête: L'entête inclut le logo de la Volle et un lien de connexion (inactif).
+      <ul>
+        <li>Les deux pages principales partagent le même en-tête</li>
+        <li>L'en tête n'a pas besoin d'être collante (suivre le défilement de la page)</li>
+      </ul>
+    </li>
+    <li>
+      Recherche: La recherche se fait sur le nom (titre) des alertes et avis.
+    </li>
+    <li>
+      Filtre: Pour chaque filtre (arrondissement, date, sujet), seule une valeur peut être sélectionnée à la fois.
+      <ul>
+        <li>Filtre de date: Utilisez deux champs texte pour représenter la période.</li>
+        <li>Plusieurs filtres peuvent être actifs en même temps</li>  
+      </ul>
+    </li>
+    <li>
+      S'abonner aux alertes: Le lien <em>M'abonner</em> affiche un message informant que la fonctionnalité n'est pas encore disponible.
+    </li>
+    <li>
+      L'interface doit être adaptée aux petits écran
+    </li>
+    <li>
+      Vous êtes libre d'utiliser la pagination ou faire l'affichage de toutes des alertes.
+    </li>
+    <li>
+      Pour ce projet, nous n'utiliserons pas de données réelles. Vous pouvez utiliser des données fictives ou des données simulées.
+    </li>
+  </ul>
+
+  <h2>Évaluation</h2>
+  <p>
+    L'évaluation de ce projet se fera en fonction des critères suivants :
+  </p>
+
+  <ul>
+    <li>Structure de l'application.</li>
+    <li>Décomposition en composant.</li>
+    <li>Respect de la spécification.</li>
+    <li>Fidélité de l'interface utilisateur.</li>
+    <li>Adaptation de l'interface aux petits écrans.</li>
+    <li>Qualité du code et respect des bonnes pratiques.</li>
+    <li>Maitrise du code et de l'application.</li>
+  </ul>
+
+  <p>
+    Ce projet compte pour <strong>30% de la note finale</strong>. Vous devez remettre votre projet sur GitHub avant la date limite de remise: <strong>dimanche 6 avril.</strong>
+    Des <strong>pénalités de 10% par jour de retard </strong> seront appliquées <strong>jusqu'au 8 avril.</strong>
+    Au-delà de cette date, une note de 0 sera attribuée au devoir. <br>
+    Une évaluation de votre application et de votre maîtrise aura lieu en classe le <strong>mardi 8 avril.</strong>
+  </p>
+
+
 
   <!-- <h2>Mandat du projet</h2>
   

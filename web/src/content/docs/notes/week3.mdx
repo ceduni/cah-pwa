@@ -4,6 +4,8 @@ description: Introduction aux composants et hooks dans React
 lastUpdated: 2025-03-24
 ---
 
+import DataFetcher from '../../../components/react/DataFetcher.jsx';
+
 ## Introduction aux hooks
 
 Un Hook est une fonction spéciale qui permet d'utiliser les fonctionnalités de React (comme l’état et le cycle de vie) dans les composants fonctionnels.
@@ -63,6 +65,11 @@ function DataFetcher() {
 
 export default DataFetcher;
 ```
+
+<div>
+  <h3>Exemple</h3>
+  <DataFetcher client:idle />
+</div>
 
 ### useRef - Accéder aux Références
 
@@ -153,60 +160,6 @@ export default function Parent() {
   );
 }
 ```
-
-<!-- ### Optimisation avec `useCallback`
-
-Si un gestionnaire d’événement est recréé à chaque rendu, cela peut affecter la performance.
-`useCallback` permet de mémoriser la fonction et éviter les recréations inutiles. Dans l'exemple suivant, on évite de recréer la fonction `incrementer` à chaque rendu.
-
-```jsx
-import { useState, useCallback } from "react";
-
-function Bouton({ onClick }) {
-  return <button onClick={onClick}>Clique-moi</button>;
-}
-
-export default function Parent() {
-  const [count, setCount] = useState(0);
-
-  const incrementer = useCallback(() => {
-    setCount((prev) => prev + 1);
-  }, []);
-
-  return (
-    <div>
-      <h2>Compteur : {count}</h2>
-      <Bouton onClick={incrementer} />
-    </div>
-  );
-}
-```
-
-### Gestion d’événements globaux avec `useEffect`
-
-Si un événement doit être écouté globalement (ex. touche clavier, redimensionnement fenêtre), on l’ajoute avec useEffect et on le nettoie correctement.
-
-```jsx
-import { useState, useEffect } from "react";
-
-export default function KeyLogger() {
-  const [key, setKey] = useState("");
-
-  useEffect(() => {
-    function handleKeyDown(event) {
-      setKey(event.key);
-    }
-
-    window.addEventListener("keydown", handleKeyDown);
-    
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
-
-  return <p>Dernière touche pressée : {key}</p>;
-}
-``` -->
 
 #### Création d’un Hook personnalisé pour gérer les clics en dehors d’un élément (useClickOutside)
 
@@ -366,5 +319,3 @@ function FormulaireNonControle() {
   );
 }
 ```
-
-<!-- ## Structurer son application -->

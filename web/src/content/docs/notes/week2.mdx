@@ -220,7 +220,7 @@ function Compteur() {
 function Compteur() {
   let compteur = 0
   
-  const handleClick= (e) => {
+  const handleClick = (e) => {
     console.log("Click!");
     compteur += 1
   }
@@ -241,12 +241,12 @@ Elle affiche le message `Click!` dans la console et incrémente la valeur du com
 ```jsx
 import { useState } from "react";
 
-function Compteur() {
-  const [compteur, setCompteur] = useState(0);
+function Compteur({valeurInitial = 0, increment = 1}) {
+  const [compteur, setCompteur] = useState(valeurInitial);
 
   const handleClick= (e) => {
-    console.log("Click!");
-    setCompteur(compteur + 1);
+    console.log(`Click! `);
+    setCompteur(compteur + increment);
   }
 
   return (
@@ -321,7 +321,7 @@ function App() {
   return (
     <div>
       <h1>Mon Application React</h1>
-      <Compteur />
+      <Compteur valeurInitial={500} />
     </div>
   );
 }

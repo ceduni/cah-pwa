@@ -22,15 +22,16 @@ Dans une application React, les routes permettent de gérer la navigation entre 
 
 ```jsx
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './pages/Home'
+import Contact from './pages/Contact'
 
 function App() {
   return (
     <Router>
-      <Switch>
-        <Route path="/accueil" component={Accueil} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/" exact component={Home} />
-      </Switch>
+      <Routes>
+        <Route path="/accueil" element={<Home />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
     </Router>
   );
 }
@@ -43,35 +44,21 @@ function App() {
 Vue.js, comme React, gère la navigation côté client à l’aide du Vue Router. Il permet de déclarer des routes qui vont afficher différents composants en fonction 
 
 ```js
+import { createMemoryHistory, createRouter } from 'vue-router'
+
 const routes = [
   { path: '/', component: Home },
   { path: '/a-propos', component: About }
 ];
 
-const router = new VueRouter({
-  routes
-});
+const router = createRouter({
+  history: createMemoryHistory(),
+  routes,
+})
 
 new Vue({
   router
 }).$mount('#app');
-```
-
-#### Angular
-
-Angular dispose également de son propre système de gestion des routes avec le Angular Router. Comme dans React et Vue, il est possible de définir des chemins pour l'application qui redirigent vers des composants spécifiques.
-
-```ts
-const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'contact', component: ContactComponent }
-];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule {}
 ```
 
 ## React Router
@@ -86,36 +73,15 @@ Pour utiliser React Router, il faut d'abord l'installer dans votre projet React 
 npm install react-router-dom
 ```
 
-Ensuite, dans le fichier `App.js`, vous devez envelopper vos routes dans un `BrowserRouter` (ou `HashRouter` selon vos besoins).
+Ensuite, dans le fichier `App.js`, vous devez envelopper vos routes dans un `BrowserRouter`.
 
-### Les composants principaux :
+<!-- ### Les composants principaux :
 
 - `Route` : permet de rendre un composant basé sur une correspondance d'URL.
-- `Switch` : rend uniquement le premier Route ou Redirect qui correspond à l'URL.
+- `Routes` : rend uniquement le premier Route ou Redirect qui correspond à l'URL.
 - `Link` : permet de créer des liens de navigation.
 - `useHistory`, `useLocation` : hooks permettant d'interagir avec l'historique de navigation et la localisation.
 
-### Exemple
-
-```jsx
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-
-function App() {
-  return (
-    <Router>
-      <nav>
-        <Link to="/home">Accueil</Link>
-        <Link to="/a-propos">À propos</Link>
-      </nav>
-
-      <Switch>
-        <Route path="/home" component={Home} />
-        <Route path="/a-propos" component={About} />
-      </Switch>
-    </Router>
-  );
-}
-```
 
 ##  Premier coup d'œil sur le Context API
 
@@ -148,4 +114,4 @@ Dans une application React avec React Router, les pages sont en réalité des co
 ```
 - /components : Contient des composants réutilisables comme le header, la barre latérale, etc.
 - /pages : Contient les pages principales de l'application, chacune correspondant à une route.
-- App.js : Le fichier principal où le Router et les Routes sont définis.
+- App.js : Le fichier principal où le Router et les Routes sont définis. -->

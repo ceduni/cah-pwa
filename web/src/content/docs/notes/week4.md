@@ -1,9 +1,6 @@
 ---
 title: Semaine 4
 description: Introduction au routage avec React Router
-banner:
-  content: |
-    Remise du projet 1: Dimanche 6 avril!
 ---
 
 ## Le concept de route dans une application web

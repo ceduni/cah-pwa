@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom'
-import { API } from './../utils/faker';
+import { API } from '../utils/faker';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
-function GardenItem() {
+function GardenPage() {
     const { id } = useParams();  // Get the id parameter from the URL
     const item = API.find(id); 
 
@@ -36,4 +36,4 @@ function GardenItem() {
     );
 }
 
-export default GardenItem
+export default GardenPage

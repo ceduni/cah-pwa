@@ -32,7 +32,7 @@ export default defineConfig({
                 label: 'Phase 2: Transformation en PWA',
                 items: [
                     // Each item here is one entry in the navigation menu.
-                    // { label: 'Semaine 5', slug: 'notes/week5' },
+                    { label: 'Semaine 5', slug: 'notes/week5' },
                     // { label: 'Semaine 6', slug: 'notes/week6' },
                     // { label: 'Semaine 7', slug: 'notes/week7' },
                     // { label: 'Semaine 8', slug: 'notes/week8' },

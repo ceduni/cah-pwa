@@ -11,8 +11,12 @@ hero:
     - text: Notes de cours
       link: /notes/week1/
       icon: right-arrow
-    - text: Projet de session
+    - text: Projet 1
       link: /project-1
+      icon: pen
+      variant: secondary
+    - text: Projet 2
+      link: /project-2
       icon: pen
       variant: secondary
 ---
@@ -23,20 +27,21 @@ import { Card, LinkCard, CardGrid } from '@astrojs/starlight/components';
 
 <CardGrid stagger>
 	<Card title="Cours de la semaine" icon="document">
-		Cette semaine, nous poursuivons notre approfondissons notre compréhension des hooks et introduisons le concept de routage dans React.  [**Voir notes de cours**](/notes/week4).
+		Cette semaine, nous poursuivons notre approfondissons notre compréhension des hooks et introduisons le concept de routage dans React.  [**Voir notes de cours**](/notes/week6).
 	</Card>
 	<Card title="Démonstrations" icon="laptop">
 		Dernière démo: [Démonstration de Composant React](https://youtu.be/UN6YhE41L_w)
 	</Card>
 	<Card title="Exercices de la semaine" icon="puzzle">
-		- [**Amélioration du portfolio**](/practice/03-todolist).  
-		- [**Système de courriel**](/practice/04-elegibility).  
+		- Amélioration de l'application TodoList. 
+		- Ajout d'une API à l'application Greenify
+		- Transformation de Greenify en PWA
 	</Card>
 	<Card title="Projet de session" icon="seti:plan">
 		Le projet de session consiste à transformer la section <a href="https://montreal.ca/avis-et-alertes" target="_blank">Avis et alertes</a>
 		du site de la ville de Montréal en application web progressive (PWA) avec le cadriciel React.  
 		- **Phase 1:** [Conception de l'application avec React](/project-1) &ndash; **Remise le 6 avril.**
-		- **Phase 2:** Transformation en PWA (À venir).
+		- **Phase 2:** [Transformation en PWA](/project-2)  &ndash; **Remise le 2 mai.**.
 		- **Phase 3:** Optimisation de l'application (À venir).
 	</Card>
 </CardGrid>

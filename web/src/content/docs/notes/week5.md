@@ -67,8 +67,8 @@ Voici un exemple de ce à quoi pourrait ressembler un fichier manifest.json pour
 - `scope` : Domaine de l'application (URL de base).
 - `orientation` : Orientation préférée de l'application.
 - `lang` : Langue de l'application.
-<!-- 
-### Role
+
+<!-- ### Role
 
 1. Ajouter l'application à l'écran d'accueil
 Même sans service worker, le fichier manifest.json permet à l'application d'être ajoutée à l'écran d'accueil d'un appareil mobile ou à l'écran principal d'un ordinateur de bureau, à condition que les autres critères de la PWA soient respectés. Cela signifie que tu peux avoir une expérience proche d'une application native, avec une icône et une ouverture en plein écran (selon la configuration).
@@ -86,10 +86,8 @@ La couleur du thème pour la barre de statut (theme_color)
 
 Le mode d'affichage (par exemple, standalone ou fullscreen).
 
-Ces éléments contribuent à améliorer l'apparence et l'intégration de l'application dans l'écosystème de l'appareil.
+Ces éléments contribuent à améliorer l'apparence et l'intégration de l'application dans l'écosystème de l'appareil. -->
 
-
- -->
 ### Limitations sans Service Worker :
 
 Même avec un fichier manifest.json bien configuré, sans service worker, plusieurs fonctionnalités essentielles des PWAs seront absentes :

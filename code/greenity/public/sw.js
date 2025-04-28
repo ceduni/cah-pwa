@@ -39,62 +39,42 @@ self.addEventListener('activate', event => {
     );
 });
 
-// // Fetch event - implement cache-first with network fallback
-// self.addEventListener('fetch', event => {
-//     // Skip non-GET requests
-//     if (event.request.method !== 'GET') return;
+// Fetch event - implement cache-first with network fallback
+self.addEventListener('fetch', event => {
+    event.respondWith(
+        caches.match(event.request)
+            .then(cachedResponse => {
+                // Return cached response if found
+                if (cachedResponse) {
+                    return cachedResponse;
+                }
 
-//     // Skip cross-origin requests
-//     if (!event.request.url.startsWith(self.location.origin)) return;
+                // If not in cache, fetch from network
+                return fetch(event.request)
+                    .then(response => {
+                        // Don't cache non-200 responses
+                        if (!response.ok) return response;
 
-//     // Handle Vite's HMR requests
-//     if (event.request.url.includes('@vite')) {
-//         return;
-//     }
+                        // Clone the response as it can only be used once
+                        const responseToCache = response.clone();
 
-//     event.respondWith(
-//         caches.match(event.request)
-//             .then(cachedResponse => {
-//                 // Return cached response if found
-//                 if (cachedResponse) {
-//                     // Update cache in the background
-//                     fetch(event.request)
-//                         .then(response => {
-//                             if (response.ok) {
-//                                 caches.open(CACHE_NAME)
-//                                     .then(cache => cache.put(event.request, response.clone()));
-//                             }
-//                         })
-//                         .catch(() => {}); // Ignore network errors
-//                     return cachedResponse;
-//                 }
+                        // Cache the successful response
+                        caches.open(CACHE_NAME)
+                            .then(cache => cache.put(event.request, responseToCache));
 
-//                 // If not in cache, fetch from network
-//                 return fetch(event.request)
-//                     .then(response => {
-//                         // Don't cache non-200 responses
-//                         if (!response.ok) return response;
-
-//                         // Clone the response as it can only be used once
-//                         const responseToCache = response.clone();
-
-//                         // Cache the successful response
-//                         caches.open(CACHE_NAME)
-//                             .then(cache => cache.put(event.request, responseToCache));
-
-//                         return response;
-//                     })
-//                     .catch(error => {
-//                         console.error('Fetch failed:', error);
-//                         // Return offline page or fallback response if needed
-//                         return new Response('Offline', {
-//                             status: 503,
-//                             statusText: 'Service Unavailable',
-//                             headers: new Headers({
-//                                 'Content-Type': 'text/plain'
-//                             })
-//                         });
-//                     });
-//             })
-//     );
-// }); 
+                        return response;
+                    })
+                    .catch(error => {
+                        console.error('Fetch failed:', error);
+                        // Return offline page or fallback response if needed
+                        return new Response('Offline', {
+                            status: 503,
+                            statusText: 'Service Unavailable',
+                            headers: new Headers({
+                                'Content-Type': 'text/plain'
+                            })
+                        });
+                    });
+            })
+    );
+}); 

@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { API } from './utils/faker';
 import Filters from './components/Filters';
+import getData from './api/getData';
 import GardenList from './components/GardenList';
 import { isAfter, isBefore, isWithin } from './utils/datefns';
 import './App.css';
+import useGardenData from './hooks/useGardenData';
 
 /**
  * 
@@ -13,9 +15,7 @@ import './App.css';
 const isDateValid = (s) => s.length > 8
 
 function App() {
-  const DATA = API.getData();
-
-  const [data, setData] = useState(DATA);
+  const { data, isLoading, errors } = useGardenData();
 
   function applyFilters(dateDebut, dateFin) {
     const isDateDebutValid = isDateValid(dateDebut);
@@ -42,6 +42,14 @@ function App() {
     }
 
     setData(filteredData);
+  }
+
+  if (isLoading) {
+    return "Loading...";
+  }
+
+  if (errors) {
+    return "Oups! Une erreur est survenue"; 
   }
 
   return (

@@ -1,4 +1,4 @@
-import { toDateString } from './../utils/datefns';
+// import { toDateString } from './../utils/datefns';
 
 function GardenListItem({ jardin }) {
     return (
@@ -15,10 +15,10 @@ function GardenListItem({ jardin }) {
                 <td>Arrondissement:</td>
                 <td>{jardin.arrondissement}</td>
             </tr>
-            <tr>
+            {/* <tr>
                 <td>Ouvert le:</td>
                 <td>{toDateString(jardin.dateOuverture, 'fr')}</td>
-            </tr>
+            </tr> */}
         </table>)
 }
 

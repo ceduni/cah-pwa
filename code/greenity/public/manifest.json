@@ -1,11 +1,11 @@
 {
-    "name": "Portfolio",
-    "short_name": "Portfolio",
+    "name": "Greenity",
+    "short_name": "Greenity",
     "start_url": "/index.html",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#000000",
-    "description": "A personal portfolio site to showcase my work and projects.",
+    "description": "A quick PWA to help you find the best places to plant your garden.",
     "icons": [
         {
             "src": "/icons/icon-192x192.svg",

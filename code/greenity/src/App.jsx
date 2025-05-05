@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
-import { API } from './utils/faker';
+import { useEffect } from 'react';
 import Filters from './components/Filters';
-import getData from './api/getData';
 import GardenList from './components/GardenList';
 import { isAfter, isBefore, isWithin } from './utils/datefns';
 import './App.css';
+import {onMessageListener, requestFirebaseNotificationPermission } from './firebase';
 import useGardenData from './hooks/useGardenData';
 
 /**
@@ -43,6 +42,22 @@ function App() {
 
     setData(filteredData);
   }
+
+  useEffect(() => {
+    requestFirebaseNotificationPermission()
+      .then((token) => {
+        console.log("FCM Token:", token);
+      })
+      .catch((error) => {
+        console.error("Error getting FCM token:", error);
+      });
+
+    onMessageListener()
+      .then((payload) => {
+        console.log("Message received. ", payload);
+      })
+      .catch((err) => console.log("failed: ", err));
+  }, []);
 
   if (isLoading) {
     return "Loading...";

@@ -1,4 +1,7 @@
-const CACHE_VERSION = 'v2';
+importScripts('https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging-compat.js');
+
+const CACHE_VERSION = 'v3';
 const CACHE_NAME = `greenity-cache-${CACHE_VERSION}`;
 const STATIC_CACHE = `greenity-static-${CACHE_VERSION}`;
 
@@ -77,4 +80,27 @@ self.addEventListener('fetch', event => {
                     });
             })
     );
-}); 
+});
+
+
+firebase.initializeApp({
+    apiKey: "AIzaSyDr8f5XIYwQ7X0l2r8I0Qwgf04yPu4iTbU",
+    authDomain: "greenity-62d3e.firebaseapp.com",
+    projectId: "greenity-62d3e",
+    messagingSenderId: "660381282028",
+    appId: "1:660381282028:web:332ad6f5b6366d746fbfc9",
+    measurementId: "G-JN6EDM80JB"
+});
+
+const messaging = firebase.messaging();
+
+messaging.onBackgroundMessage(function (payload) {
+    console.log('[firebase-messaging-sw.js] Received background message ', payload);
+    const notificationTitle = payload.notification.title;
+    const notificationOptions = {
+        body: payload.notification.body,
+        icon: '/firebase-logo.png'
+    };
+
+    self.registration.showNotification(notificationTitle, notificationOptions);
+});

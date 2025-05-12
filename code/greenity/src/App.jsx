@@ -42,7 +42,7 @@ function App() {
 
     setData(filteredData);
   }
-
+  
   useEffect(() => {
     requestFirebaseNotificationPermission()
       .then((token) => {

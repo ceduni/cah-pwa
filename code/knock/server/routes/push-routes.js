@@ -5,16 +5,22 @@ const { sendPushNotification } = require('../utils/push-service');
 // Temporary in-memory store
 const subscriptions = [];
 
+function addSubscription(subscription) {
+    const exists = subscriptions.some(sub => sub.endpoint === subscription.endpoint);
+    if (!exists) {
+        subscriptions.push(subscription);
+        return true;
+    } 
+
+    return false;
+}
+
 router.post('/subscribe', (req, res) => {
     console.log('Received subscription request:', req.body);
 
     const subscription = req.body;
     
-    // Check if subscription already exists based on endpoint
-    const exists = subscriptions.some(sub => sub.endpoint === subscription.endpoint);
-
-    if (!exists) {
-        subscriptions.push(subscription);
+    if (addSubscription(subscription)) {
         console.log('=> New subscription added:', subscription);
         res.status(201).json({ message: 'Subscribed' });
     } else {

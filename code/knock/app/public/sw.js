@@ -44,4 +44,13 @@ self.addEventListener('push', event => {
         body: data.body,
         icon: '/icons/icon-192x192.svg',
     });
+
+    self.clients.matchAll().then(clients => {
+        clients.forEach(client => {
+            client.postMessage({
+                title: data.title,
+                body: data.body,
+            });
+        });
+    });
 });

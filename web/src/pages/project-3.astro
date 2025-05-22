@@ -68,39 +68,34 @@ import { FileTree } from "@astrojs/starlight/components";
                 <b>Page de détail &ndash; <i style="color: #BB2649">idem que projet 2</i></b> 
             </li>
             <li>
-                <b>Pagination &ndash;</b> 
-                L'application ne doit pas afficher tous les avis/alertes en même temps. Elle doit au minimum
-                afficher un maximum de 10 avis/alertes par page.  <br>
-                Vous devez choisir entre <b>deux options:</b>
-                <ul>
-                    <li>
-                        Ajouter un bouton "Charger plus" à la fin de la liste pour récupérer les 10 suivantes. <b>OU</b></li>
-                     <li>
-                        Ajouter des boutons "Page suivante" / "Page précédente" ou un système de pagination numérotée.
-                     </li>
-                </ul>
-            </li>
-            <li>
-                <b>S'abonner aux alertes &ndash; :</b> Le lien <em>M'abonner</em> affiche un liste d'options permettant
-                de controler les notifications qui seront envoyées à l'appareil.
+                <b>S'abonner aux alertes :</b> Lorsqu'un utilisateur clique sur le lien <b>« M'abonner »</b>, 
+                une <b>fenêtre modale (popup)</b> doit s'afficher. Cette fenêtre permet de gérer l'abonnement de
+                l'appareil de l'utilisateur aux notifications push. La fenêtre doit contenir les éléments suivants :
                 <ul style="margin: 0;">
                     <li>
-                        Les notifications peuvent être envoyées pour tous les avis
-                        ou seulement pour ceux qui vous intéressent
+                        Un court texte explicatif décrivant le fonctionnement des notifications (ex. : "Vous recevrez une alerte lorsque de nouveaux contenus seront disponibles.").
                     </li>
                     <li>
-                        Les notifications peuvent être envoyées pour tous les
-                        arrondissements ou seulement pour ceux qui vous intéressent
+                        Si l'appareil n'est pas encore abonné : Afficher un bouton « S'abonner » permettant d'initier le processus d'abonnement.
                     </li>
                     <li>
-                        Les options choisies doivent être préservés dans le stockage local
-                        de l'appareil.
+                        Si l'appareil est déjà abonné : Afficher un bouton « Se désabonner » permettant d'annuler l'abonnement de l'appareil aux notifications.
                     </li>
                 </ul>
-            </li>         
+
+                <b style="color: orangered">Bonus:</b> L'utilisateur doit pouvoir choisir les avis pour lesquels il souhaite être notifié. Ci-dessous la liste des options:
+                <ul style="margin: 0;">
+                    <li>
+                        Sujet: Permet de sélectionner les sujets pour lesquels l'utilisateur souhaite être notifié.
+                    </li>
+                    <li>
+                        Arrondissement: Permet de sélectionner les arrondissements pour lesquels l'utilisateur souhaite être notifié.
+                    </li>
+                </ul>
+            </li>   
             <li>
-                <b style="color: #BB2649">Données (API Express):</b> Les données présentées dans 
-                l'application doivent provenir du serveur Express (backend).
+                <b>Données (API Express):</b> Les données présentées dans l'application doivent provenir
+                du serveur Express (backend) plutôt que directement de l'API de la ville.
                 <ul style="margin: 0;">
                     <li>
                         Le serveur est responsable de récupérer les données de la ville et les 
@@ -109,13 +104,11 @@ import { FileTree } from "@astrojs/starlight/components";
                 </ul>
             </li>
             <li>
-                <b style="color: #BB2649">Application installable (PWA):</b> L'application
-                doit pouvoir être installé sur un téléphone Android ou iOS avec un haut degré
-                de personnalisation.
+                <b>Application installable (PWA):</b> L'application doit pouvoir être installé sur un
+                téléphone Android ou iOS avec un haut degré de personnalisation.
             </li>
             <li>
-                <b style="color: #BB2649">Mode hors-ligne (PWA):</b> L'application doit être demeuré
-                utilisable sans connexion internet.
+                <b>Mode hors-ligne (PWA):</b> L'application doit être demeuré utilisable sans connexion internet.
                 <ul style="margin: 0;">
                     <li>
                         Les derniers avis téléchargés doivent demeurer accessible
@@ -126,16 +119,28 @@ import { FileTree } from "@astrojs/starlight/components";
                 </ul>
             </li>
             <li>
-                <b style="color: #BB2649">Notification Push (PWA):</b> L'application doit être capable
-                de recevoir des notifications du serveur Express (backend).
+                <b>Notification Push (PWA):</b> L'application doit être capable de recevoir des notifications du serveur Express (backend).
+                Utilisez le package <code>web-push</code> côté serveur et l'API Push côté client.
                 <ul style="margin: 0;">
                     <li>
                         Les notifications doivent s'afficher dans l'appareil de l'utilisateur, même si l'application n'est pas ouverte.
                     </li>
                     <li>
-                        Si l'application est ouverte, la notification doit s'afficher aussi dans l'application.
+                        <b style="color: orangered">Bonus:</b> Si l'application est ouverte, la notification doit s'afficher aussi dans l'application.
                     </li>
-                    <li>Utiliser le package <code>web-push</code> côté serveur et l’API Push côté client.</li>
+                </ul>
+            </li>
+            <li>
+                <b>Pagination (<b style="color: orangered">Bonus</b>):</b> 
+                L'application ne doit pas afficher tous les avis/alertes en même temps. Vous pouvez 
+                limiter à 10 le nombre d'avis/alertes affichés à la fois. 
+                Vous devez choisir entre <b>deux options:</b>
+                <ul>
+                    <li>
+                        Ajouter un bouton "Charger plus" à la fin de la liste pour récupérer les 10 suivantes. <b>OU</b></li>
+                     <li>
+                        Ajouter des boutons "Page suivante" / "Page précédente" ou un système de pagination numérotée.
+                     </li>
                 </ul>
             </li>
         </ul>
@@ -145,37 +150,46 @@ import { FileTree } from "@astrojs/starlight/components";
         </h3>
         <p>
             Développer un serveur backend en Node.js avec Express qui permet de gérer les avis/alertes
-            de la Ville de Montréal ainsi que l'envoi de notifications push à des appareils abonnés. 
+            de la Ville de Montréal ainsi que l'envoi de notifications push aux appareils abonnés. 
             Le serveur doit respecter les spécifications fonctionnelles suivantes :
         </p>
         <ol>
             <li>
-                <b>Requête GET:</b> L'application doit être capable de répondre à des requêtes
-                GET pour les données suivantes:
+                <b>Requête GET:</b> L'API doit être capable de répondre aux requêtes GET suivantes:
                 <ul style="margin: 0;">
                     <li>
-                        <code>GET /avis-alertes</code>: Récupérez la liste des avis et alertes émis par la Ville de
-                        Montréal
+                        <code>GET /avis-alertes</code>: Récupère la liste des avis et alertes émis par la Ville de
+                        Montréal. Cette requête communique avec l'API de la ville pour récupérer les données puis 
+                        les formate pour l'application. <br>
+                        <b style="color: orangered">Bonus:</b> Supporter la pagination, les filtres par type ou date, et la recherche par mots-clés.
                     </li>
                 </ul>
             </li>
             <li>
-                <b>Requête POST:</b> L'application doit être capable de répondre à des requêtes
-                POST pour permettre de:
+                <b>Requête POST:</b> L'API doit être capable de répondre aux requêtes POST suivantes:
                 <ul style="margin: 0;">
                     <li>
-                        <code>POST /subscribe</code>: Souscrire un appareil pour recevoir des notifications
+                        <code>POST /subscribe</code>: Permet d'enregistrer un abonnement push (subscription) d'un appareil.
+                        Le serveur doit enregistrer l'abonnement dans la base de données s'il n'est pas déjà présent.
                     </li>
                     <li>
-                        <code>POST /send-notification</code>: Envoyer une notification push à tous les appareils souscrits à l’aide du package <code>web-push</code>
+                        <code>POST /unsubscribe</code>: Supprime un abonnement push existant (identifié par son endpoint).
+                        Si l'abonnement n'est pas trouvé, retourner un message d'erreur.
+                    </li>
+                    <li>
+                        <code>POST /send-notification</code>: Envoie une notification push à tous les appareils abonnés,
+                        à l'aide du module <code>web-push</code>. Cette requête est faite par un client (ex: Postman) pour
+                        tester l'envoi de notifications. Les notifications ne sont pas des avis/alertes, mais
+                        des messages liés aux avis.
                     </li>
                 </ul>
             </li>
             <li>
-                <b>Base de données:</b> Votre serveur doit être connecté à une base de données (MongoDB, Firebase, PostgreSQL, ou autre) pour :
+                <b>Base de données:</b> Votre serveur doit être connecté à une base de données (Firebase ou MongoDB Cloud) 
+                pour préserver les abonnements push.
                 <ul>
-                    <li>Enregistrer les abonnements push</li>
-                    <li>Conserver l'historique des notifications envoyées </li>
+                    <li>Modèle Subscription : Stocker l’objet de souscription (endpoint, clés, date de souscription).</li>  
+                    <li>Modèle Notification (<b style="color: orangered">Bonus</b>) : Journaliser les notifications envoyées (date, contenu, destinataires, succès/échecs).</li>  
                 </ul>
             </li>
         </ol>
@@ -251,7 +265,7 @@ import { FileTree } from "@astrojs/starlight/components";
     <p>
         Ce projet compte pour <strong>40% de la note finale</strong>. Vous devez remettre le
         <b>lien vers votre répertoire GitHub contenant le code source ainsi que votre rapport</b>
-        sur Léa (Omnivox) avant le <strong>2 juin.</strong>
+        sur Léa (Omnivox) avant le <strong>1er juin.</strong>
     </p>
     <h3>Précisions sur le répertoire GitHub</h3>
     <p>

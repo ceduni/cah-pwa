@@ -1,0 +1,114 @@
+@import url('https://unpkg.com/leaflet@1.9.4/dist/leaflet.css');
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.bare-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.filter { 
+  margin: 8px;
+  display: flex;
+}
+
+.filter--date {
+  background-color: #e5e4e2;
+  border-radius: 180px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px -1px #c0c0c0;
+}
+
+  .filter--date .lbl {
+    display: inline-block;
+    padding: 6px;
+    width: 48px;
+    background-color: #d5d5d5;
+    color: #222;
+    transition: .2s;
+  }
+
+    .filter--date:focus-within .lbl {
+      background: #333;
+      color: #fff;
+    }
+
+  .filter--date input {
+    border: 0 none;
+    background: none;
+    padding: 6px 12px;
+    font-weight: 500;
+  }
+
+.btn-filter {
+  margin-left: 6px;
+  padding: 6px 12px;
+  border-radius: 2px;
+  background-color: royalblue;
+  color: #fff;
+}
+  .btn-filter:hover {
+    background-color: rgb(50, 81, 174);;
+  }
+
+.cards {
+  display: grid; 
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.card {
+  flex: 1 1;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  transition: .2s;
+  cursor: pointer;
+}
+
+  .card:hover {
+    box-shadow: 0 2px 6px #d5d5d5;
+  }
+
+  .card-link {
+    display: block;
+    height: 100%;
+    width: 100%;
+    padding: 1em;
+  }
+
+  .card tr {
+    text-align: left;
+  }
+
+  .card td {
+    vertical-align: top;
+    padding-top: 6px; padding-bottom: 6px;
+  }
+
+  .card td:last-child {
+    color: #333;
+  }
+
+.map-container {
+  margin-top: 12px;
+  height: 400px;
+  width: '100%';
+}
